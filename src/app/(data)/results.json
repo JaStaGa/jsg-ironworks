@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "title": "8-week cut",
+        "before": "/demo/before1.jpg",
+        "after": "/demo/after1.jpg",
+        "notes": "-12 lb"
+    },
+    {
+        "id": 2,
+        "title": "Bench focus",
+        "before": "/demo/before1.jpg",
+        "after": "/demo/after1.jpg",
+        "notes": "+25 lb 1RM"
+    },
+    {
+        "id": 3,
+        "title": "Deadlift PR",
+        "before": "/demo/before1.jpg",
+        "after": "/demo/after1.jpg",
+        "notes": "+40 lb 1RM"
+    },
+    {
+        "id": 4,
+        "title": "Hypertrophy block",
+        "before": "/demo/before1.jpg",
+        "after": "/demo/after1.jpg",
+        "notes": "+1.5\" arms"
+    },
+    {
+        "id": 5,
+        "title": "Recomp",
+        "before": "/demo/before1.jpg",
+        "after": "/demo/after1.jpg",
+        "notes": "Lean mass up"
+    },
+    {
+        "id": 6,
+        "title": "Cut + peak",
+        "before": "/demo/before1.jpg",
+        "after": "/demo/after1.jpg",
+        "notes": "Meet ready"
+    }
+]

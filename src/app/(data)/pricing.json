@@ -1,0 +1,57 @@
+{
+    "tiers": [
+        {
+            "id": "basic",
+            "name": "Basic",
+            "price": 79,
+            "period": "mo",
+            "features": [
+                "Template program",
+                "Email support",
+                "Monthly check-in"
+            ]
+        },
+        {
+            "id": "plus",
+            "name": "Plus",
+            "price": 159,
+            "period": "mo",
+            "features": [
+                "Custom program",
+                "Weekly check-in",
+                "Form review"
+            ]
+        },
+        {
+            "id": "pro",
+            "name": "Pro",
+            "price": 299,
+            "period": "mo",
+            "features": [
+                "Custom periodization",
+                "Video analysis",
+                "Priority support"
+            ]
+        }
+    ],
+    "compare": [
+        {
+            "feature": "Custom program",
+            "basic": false,
+            "plus": true,
+            "pro": true
+        },
+        {
+            "feature": "Weekly check-in",
+            "basic": false,
+            "plus": true,
+            "pro": true
+        },
+        {
+            "feature": "Video analysis",
+            "basic": false,
+            "plus": false,
+            "pro": true
+        }
+    ]
+}

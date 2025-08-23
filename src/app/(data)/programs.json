@@ -1,0 +1,23 @@
+[
+    {
+        "slug": "foundations",
+        "title": "Foundations",
+        "level": "Beginner",
+        "weeks": 8,
+        "description": "Movement quality, basic strength, linear progression."
+    },
+    {
+        "slug": "hypertrophy",
+        "title": "Hypertrophy",
+        "level": "Intermediate",
+        "weeks": 12,
+        "description": "Volume-focused cycles to add size with strength retention."
+    },
+    {
+        "slug": "peak",
+        "title": "Peak Strength",
+        "level": "Advanced",
+        "weeks": 10,
+        "description": "Tapered intensity to peak for 1RM performance."
+    }
+]

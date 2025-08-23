@@ -1,0 +1,16 @@
+[
+    {
+        "slug": "progressive-overload-basics",
+        "title": "Progressive Overload: The Basics",
+        "date": "2025-08-01",
+        "excerpt": "How to add weight or reps without stalling.",
+        "contentHtml": "<p>Progressive overload drives adaptation. Add small increments weekly and deload when fatigue accumulates.</p>"
+    },
+    {
+        "slug": "epley-vs-brzycki",
+        "title": "1RM Formulas: Epley vs Brzycki",
+        "date": "2025-08-10",
+        "excerpt": "Which estimator makes sense for you.",
+        "contentHtml": "<p>Epley tends to fit high-rep sets. Brzycki fits lower-rep efforts. Track your own error and choose.</p>"
+    }
+]
