@@ -20,21 +20,21 @@ export default function OneRepMax() {
     const oneRm = w && r ? +(w * (1 + r / 30)).toFixed(1) : 0
 
     return (
-        <div className="rounded-2xl border border-zinc-800 p-5">
+        <div className="rounded-2xl border border-steel p-5">
             <h3 className="text-lg font-semibold">1RM Calculator</h3>
             <div className="mt-4 grid grid-cols-2 gap-3">
                 <label className="text-sm text-zinc-400">Weight (lb)
                     <input
                         {...register("weight", { valueAsNumber: true })}
                         inputMode="decimal"
-                        className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2"
+                        className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2"
                     />
                 </label>
                 <label className="text-sm text-zinc-400">Reps (1–12)
                     <input
                         {...register("reps", { valueAsNumber: true })}
                         inputMode="numeric"
-                        className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2"
+                        className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2"
                     />
                 </label>
             </div>
@@ -52,7 +52,7 @@ export default function OneRepMax() {
 
 function Stat({ label, value }: { label: string; value: string }) {
     return (
-        <div className="rounded-lg bg-zinc-900 border border-zinc-800 p-3">
+        <div className="rounded-lg bg-ink border border-steel p-3">
             <div className="text-zinc-400 text-[11px] uppercase tracking-wide">{label}</div>
             <div className="text-zinc-100 text-base">{value}</div>
         </div>

@@ -19,7 +19,7 @@ export default function Page() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {pricing.tiers.map((t) => (
-                    <article key={t.id} className="rounded-2xl border border-zinc-800 p-5">
+                    <article key={t.id} className="rounded-2xl border border-steel p-5">
                         <h2 className="text-lg font-semibold">{t.name}</h2>
                         <div className="mt-2 text-3xl font-bold text-safety">
                             ${t.price}<span className="text-sm text-zinc-400">/{t.period}</span>
@@ -32,7 +32,7 @@ export default function Page() {
             </div>
 
             <h2 className="text-xl font-semibold mt-12 mb-4">Compare</h2>
-            <div className="overflow-x-auto rounded-xl border border-zinc-800">
+            <div className="overflow-x-auto rounded-xl border border-steel">
                 <table className="min-w-[700px] w-full text-sm">
                     <thead>
                         <tr className="bg-zinc-950">
@@ -42,7 +42,7 @@ export default function Page() {
                     </thead>
                     <tbody>
                         {pricing.compare.map((row, i) => (
-                            <tr key={i} className="border-t border-zinc-800">
+                            <tr key={i} className="border-t border-steel">
                                 <td className="p-3 text-zinc-300">{row.feature}</td>
                                 {pricing.tiers.map((t) => {
                                     const v = row[t.id] ?? false

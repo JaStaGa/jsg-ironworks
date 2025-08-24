@@ -13,8 +13,8 @@ export default function TransformTimeline({
     const active = stages[i]
 
     return (
-        <div className="rounded-2xl border border-zinc-800 p-4">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl ring-1 ring-zinc-800">
+        <div className="rounded-2xl border border-steel p-4">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl ring-1 ring-steel">
                 {/* Base */}
                 <Image src={base} alt="Start" fill className="object-cover" />
                 {/* Active stage */}

@@ -16,16 +16,16 @@ export default function LeadForm() {
     }
 
     return (
-        <form onSubmit={onSubmit} className="grid gap-3 rounded-2xl border border-zinc-800 p-5">
+        <form onSubmit={onSubmit} className="grid gap-3 rounded-2xl border border-steel p-5">
             <h3 className="text-lg font-semibold">Get a free consult</h3>
             <label className="text-sm text-zinc-400">Name
-                <input name="name" required className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                <input name="name" required className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
             </label>
             <label className="text-sm text-zinc-400">Email
-                <input name="email" type="email" required className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                <input name="email" type="email" required className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
             </label>
             <label className="text-sm text-zinc-400">Message
-                <textarea name="message" rows={3} className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                <textarea name="message" rows={3} className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
             </label>
             <button disabled={loading} className="rounded-lg px-4 py-2 bg-safety text-black font-medium">
                 {loading ? "Sending..." : "Submit"}

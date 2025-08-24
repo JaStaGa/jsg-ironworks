@@ -1,5 +1,6 @@
 import "./globals.css"
 import type { Metadata } from "next"
+import { heading, mono } from "./fonts"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 
@@ -25,13 +26,9 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN
   return (
-    <html lang="en">
+    <html lang="en" className={`${heading.variable} ${mono.variable}`}>
       <body className="min-h-dvh bg-ink text-zinc-200 antialiased">
-        {plausibleDomain ? (
-          <script defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js" />
-        ) : null}
         <Header />
         <main className="px-4 sm:px-6 lg:px-8">{children}</main>
         <Footer />
@@ -40,3 +37,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+

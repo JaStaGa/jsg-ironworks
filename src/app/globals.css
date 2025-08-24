@@ -9,13 +9,15 @@
 
 /* Brand tokens for utilities like bg-ink, text-safety, shadow-soft */
 @theme inline {
-  --color-ink: #0a0a0a;
-  --color-steel: #2a2a2a;
-  --color-safety: #ff7a00;
+  /* Brand */
+  --color-ink: #0a0a0a;      /* page bg + dark chrome */
+  --color-steel: #2a2a2a;    /* cards, borders, rings */
+  --color-safety: #ff7a00;   /* accents and CTAs */
 
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, .25);
+  /* Shape + elevation */
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.25);
 }
 
 html,
@@ -27,4 +29,19 @@ body {
 *:focus-visible {
   outline: 2px solid var(--color-safety);
   outline-offset: 2px;
+}
+
+/* Headings use wide grotesk */
+h1,
+h2,
+h3,
+.heading {
+  font-family: var(--font-heading), ui-sans-serif, system-ui
+}
+
+/* Mono numerals with tabular alignment */
+.num,
+.tabular-nums {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
 }

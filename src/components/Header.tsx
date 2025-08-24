@@ -14,7 +14,7 @@ const links = [
 export default function Header() {
     const pathname = usePathname()
     return (
-        <header className="sticky top-0 z-50 bg-ink/70 backdrop-blur border-b border-zinc-800">
+        <header className="sticky top-0 z-50 bg-ink/70 backdrop-blur border-b border-steel">
             <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-3">
                 <Link href="/" className="font-semibold tracking-tight text-zinc-100">JSG Ironworks</Link>
                 <nav className="hidden md:flex gap-6 text-sm">

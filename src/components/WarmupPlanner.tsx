@@ -33,25 +33,25 @@ export default function WarmupPlanner() {
     }, [e1rm, reps, top])
 
     return (
-        <div className="rounded-2xl border border-zinc-800 p-5">
+        <div className="rounded-2xl border border-steel p-5">
             <h3 className="text-lg font-semibold">Warm-up Planner</h3>
             <div className="mt-3 grid grid-cols-3 gap-3">
                 <label className="text-sm text-zinc-400">Top set (lb)
                     <input value={top} onChange={e => setTop(Number(e.target.value) || 0)}
-                        inputMode="decimal" className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                        inputMode="decimal" className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
                 </label>
                 <label className="text-sm text-zinc-400">Reps
                     <input value={reps} onChange={e => setReps(Number(e.target.value) || 0)}
-                        inputMode="numeric" className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                        inputMode="numeric" className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
                 </label>
                 <label className="text-sm text-zinc-400">Bar (lb)
                     <input value={bar} onChange={e => setBar(Number(e.target.value) || 0)}
-                        inputMode="decimal" className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                        inputMode="decimal" className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
                 </label>
             </div>
             <p className="mt-2 text-xs text-zinc-400">e1RM: <span className="text-zinc-100">{e1rm} lb</span></p>
 
-            <div className="mt-4 overflow-x-auto rounded-xl border border-zinc-800">
+            <div className="mt-4 overflow-x-auto rounded-xl border border-steel">
                 <table className="min-w-[720px] w-full text-sm">
                     <thead>
                         <tr className="bg-zinc-950">
@@ -66,7 +66,7 @@ export default function WarmupPlanner() {
                         {rows.map((r, i) => {
                             const pairs = platePairs(r.weight, "lb", bar)
                             return (
-                                <tr key={i} className="border-t border-zinc-800">
+                                <tr key={i} className="border-t border-steel">
                                     <td className="p-3">{i < TEMPLATE.length ? `Warm-up ${i + 1}` : "Top"}</td>
                                     <td className="p-3">{Math.round(r.pct * 100)}%</td>
                                     <td className="p-3">{r.reps}</td>

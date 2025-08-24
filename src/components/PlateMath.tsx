@@ -16,11 +16,11 @@ export default function PlateMath() {
     const pairs = useMemo(() => platePairs(rounded, unit, barUse), [rounded, unit, barUse])
 
     return (
-        <div className="rounded-2xl border border-zinc-800 p-5">
+        <div className="rounded-2xl border border-steel p-5">
             <div className="flex items-center justify-between gap-3">
                 <h3 className="text-lg font-semibold">Plate Visualizer</h3>
                 <select value={unit} onChange={e => setUnit(e.target.value as Unit)}
-                    className="bg-zinc-900 border border-zinc-800 rounded px-2 py-1 text-sm">
+                    className="bg-ink border border-steel rounded px-2 py-1 text-sm">
                     <option value="lb">lb</option><option value="kg">kg</option>
                 </select>
             </div>
@@ -28,17 +28,17 @@ export default function PlateMath() {
             <div className="mt-3 grid grid-cols-3 gap-3">
                 <label className="text-sm text-zinc-400">Target ({unit})
                     <input value={target} onChange={e => setTarget(Number(e.target.value) || 0)}
-                        inputMode="decimal" className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                        inputMode="decimal" className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
                 </label>
                 <label className="text-sm text-zinc-400">Bar ({unit})
                     <input value={barUse} onChange={e => setBar(Number(e.target.value) || 0)}
-                        inputMode="decimal" className="mt-1 w-full rounded-md bg-zinc-900 border border-zinc-800 px-3 py-2" />
+                        inputMode="decimal" className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
                 </label>
                 <div className="text-sm text-zinc-400 flex items-end">Rounded: <span className="ml-2 text-zinc-100">{rounded} {unit}</span></div>
             </div>
 
             {/* bar svg */}
-            <div className="mt-5 rounded-lg border border-zinc-800 bg-zinc-950 p-4">
+            <div className="mt-5 rounded-lg border border-steel bg-zinc-950 p-4">
                 <div className="mx-auto max-w-xl">
                     <svg viewBox="0 0 600 120" className="w-full h-24">
                         {/* Bar */}
