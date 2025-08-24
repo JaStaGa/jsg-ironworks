@@ -39,7 +39,7 @@ export async function POST(req: Request) {
             msg: "Submitted. This is a demo using Ethereal.",
             preview: nodemailer.getTestMessageUrl(info),
         })
-    } catch (e) {
+    } catch {
         return NextResponse.json({ ok: false, msg: "Server error" }, { status: 500 })
     }
 }

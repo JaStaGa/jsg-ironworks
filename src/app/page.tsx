@@ -1,12 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import BeforeAfter from "@/components/BeforeAfter"
 import OneRepMax from "@/components/OneRepMax"
 import PrTracker from "@/components/PrTracker"
 import LeadForm from "@/components/LeadForm"
 import MobileStickyBook from "@/components/MobileStickyBook"
-import results from "./(data)/results.json"
+import TransformTimeline from "@/components/TransformTimeline"
+import PlateMath from "@/components/PlateMath"
+import WarmupPlanner from "@/components/WarmupPlanner"
 
 export default function Page() {
   return (
@@ -33,16 +34,23 @@ export default function Page() {
 
       <section className="mx-auto max-w-6xl py-12 border-t border-zinc-800">
         <h2 className="text-xl font-semibold mb-6">Transformations</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {results.slice(0, 6).map((r) => (
-            <div key={r.id} className="rounded-xl border border-zinc-800 p-2">
-              <BeforeAfter before={r.before} after={r.after} alt={r.title} />
-              <div className="px-1 py-2 text-sm">
-                <div className="font-medium">{r.title}</div>
-                <div className="text-zinc-400">{r.notes}</div>
-              </div>
-            </div>
-          ))}
+        <div className="grid lg:grid-cols-2 gap-6">
+          <TransformTimeline
+            base="/demo/before1.jpg"
+            stages={[
+              { label: "Week 4", src: "/demo/after1.jpg" },
+              { label: "Week 8", src: "/demo/after1.jpg" },
+              { label: "Peak", src: "/demo/after1.jpg" }
+            ]}
+          />
+          <TransformTimeline
+            base="/demo/before1.jpg"
+            stages={[
+              { label: "Block 1", src: "/demo/after1.jpg" },
+              { label: "Block 2", src: "/demo/after1.jpg" },
+              { label: "Meet", src: "/demo/after1.jpg" }
+            ]}
+          />
         </div>
       </section>
 
@@ -51,6 +59,8 @@ export default function Page() {
         <div className="grid lg:grid-cols-2 gap-8">
           <OneRepMax />
           <PrTracker />
+          <WarmupPlanner />
+          <PlateMath />
         </div>
       </section>
 
