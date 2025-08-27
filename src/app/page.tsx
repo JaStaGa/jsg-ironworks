@@ -1,75 +1,56 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import HeroMetrics from "@/components/HeroMetrics"
+import ResultTile from "@/components/ResultTile"
 import OneRepMax from "@/components/OneRepMax"
 import PrTracker from "@/components/PrTracker"
-import LeadForm from "@/components/LeadForm"
-import MobileStickyBook from "@/components/MobileStickyBook"
-import TransformTimeline from "@/components/TransformTimeline"
 import PlateMath from "@/components/PlateMath"
 import WarmupPlanner from "@/components/WarmupPlanner"
+import LeadForm from "@/components/LeadForm"
+import MobileStickyBook from "@/components/MobileStickyBook"
 
 export default function Page() {
   return (
     <>
-      <section className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-10 items-center py-16 lg:py-24">
-        <div>
-          <h1 className="heading text-4xl sm:text-5xl font-semibold tracking-tight">
-            JSG Ironworks Training
-          </h1>
-          <p className="mt-4 text-zinc-400 max-w-xl">Build measurable strength. Track PRs. See results.</p>
-          <div className="mt-8 flex gap-3">
-            <Button asChild className="bg-safety text-black hover:opacity-90"><Link href="/book">Book a session</Link></Button>
-            <Button asChild variant="outline" className="border-zinc-700 text-zinc-200 hover:bg-ink"><Link href="/programs">View programs</Link></Button>
-          </div>
-          <ul className="mt-10 flex flex-wrap items-center gap-6 opacity-80">
-            <li className="text-xs uppercase tracking-wider text-zinc-500">As seen on</li>
-            <li className="h-6 w-20 bg-zinc-800 rounded" />
-            <li className="h-6 w-20 bg-zinc-800 rounded" />
-            <li className="h-6 w-20 bg-zinc-800 rounded" />
-          </ul>
+      {/* Hero (image-light) */}
+      {/* page.tsx */}
+      <div className="steel-hatch-svg -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <HeroMetrics />
         </div>
-        <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden ring-1 ring-steel">
-          <Image src="/demo/after1.jpg" alt="Training" fill priority className="object-cover" />
-        </div>
-      </section>
+      </div>
 
-      <section className="mx-auto max-w-6xl py-12 border-t border-steel">
-        <h2 className="text-xl font-semibold mb-6">Transformations</h2>
-        <div className="grid lg:grid-cols-2 gap-6">
-          <TransformTimeline
-            base="/demo/before1.jpg"
-            stages={[
-              { label: "Week 4", src: "/demo/after1.jpg" },
-              { label: "Week 8", src: "/demo/after1.jpg" },
-              { label: "Peak", src: "/demo/after1.jpg" }
-            ]}
+      {/* Progress summary */}
+      <section className="mx-auto max-w-6xl py-8 steel-divider">
+        <h2 className="text-xl font-semibold mb-6">Progress at a glance</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ResultTile
+            title="Squat 1RM"
+            delta="+25 lb"
+            data={[{ w: "W1", v: 315 }, { w: "W2", v: 320 }, { w: "W3", v: 330 }, { w: "W4", v: 340 }]}
           />
-          <TransformTimeline
-            base="/demo/before1.jpg"
-            stages={[
-              { label: "Block 1", src: "/demo/after1.jpg" },
-              { label: "Block 2", src: "/demo/after1.jpg" },
-              { label: "Meet", src: "/demo/after1.jpg" }
-            ]}
+          <ResultTile
+            title="Bench 1RM"
+            delta="+10 lb"
+            data={[{ w: "W1", v: 225 }, { w: "W2", v: 230 }, { w: "W3", v: 232 }, { w: "W4", v: 235 }]}
+          />
+          <ResultTile
+            title="Deadlift 1RM"
+            delta="+40 lb"
+            data={[{ w: "W1", v: 365 }, { w: "W2", v: 385 }, { w: "W3", v: 395 }, { w: "W4", v: 405 }]}
           />
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl py-12 border-t border-steel">
-        <h2 className="text-xl font-semibold mb-6">Progress tools</h2>
-        <div className="grid lg:grid-cols-2 gap-8">
+      {/* Training tools */}
+      <section className="mx-auto max-w-6xl py-12 steel-divider">
+        <h2 className="text-xl font-semibold mb-6">Training tools</h2>
+        <div className="grid lg:grid-cols-3 gap-8">
           <OneRepMax />
           <PrTracker />
-          <WarmupPlanner />
           <PlateMath />
         </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl py-12 border-t border-steel">
-        <div className="grid lg:grid-cols-2 gap-8">
-          <LeadForm />
-          <div className="rounded-2xl border border-steel p-5">
+        <div className="grid lg:grid-cols-2 gap-8 mt-8">
+          <WarmupPlanner />
+          <div className="card p-5">
             <h3 className="text-lg font-semibold">Why Ironworks</h3>
             <p className="mt-2 text-zinc-400">Evidence-based programming. Consistent tracking. Clear results.</p>
             <ul className="mt-4 space-y-2 text-sm text-zinc-300 list-disc ml-5">
@@ -81,7 +62,21 @@ export default function Page() {
         </div>
       </section>
 
-      <script type="application/ld+json"
+      {/* Lead + CTA */}
+      <section className="mx-auto max-w-6xl py-12 steel-divider">
+        <div className="grid lg:grid-cols-2 gap-8">
+          <LeadForm />
+          <div className="card p-5">
+            <h3 className="text-lg font-semibold">Questions?</h3>
+            <p className="mt-2 text-zinc-400">Book a free call to see if we’re a fit.</p>
+            <a href="/book" className="inline-block mt-4 rounded-lg px-4 py-2 bg-safety text-black font-medium">Book</a>
+          </div>
+        </div>
+      </section>
+
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -89,8 +84,13 @@ export default function Page() {
             name: "JSG Ironworks Training",
             url: "https://jsg-ironworks.vercel.app",
             image: "/og.jpg",
-            address: { "@type": "PostalAddress", addressLocality: "Boston", addressRegion: "MA", addressCountry: "US" }
-          })
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Boston",
+              addressRegion: "MA",
+              addressCountry: "US",
+            },
+          }),
         }}
       />
       <div className="sm:hidden"><MobileStickyBook /></div>

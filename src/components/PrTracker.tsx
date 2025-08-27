@@ -24,7 +24,7 @@ export default function PrTracker() {
     const max = useMemo(() => data.reduce((m, x) => Math.max(m, x.weight), 0), [data])
 
     return (
-        <div className="rounded-2xl border border-steel p-5">
+        <div className="card p-5">
             <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">Weekly PR Tracker</h3>
                 <select value={lift} onChange={e => setLift(e.target.value)}

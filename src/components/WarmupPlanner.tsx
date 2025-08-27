@@ -33,7 +33,7 @@ export default function WarmupPlanner() {
     }, [e1rm, reps, top])
 
     return (
-        <div className="rounded-2xl border border-steel p-5">
+        <div className="card p-5">
             <h3 className="text-lg font-semibold">Warm-up Planner</h3>
             <div className="mt-3 grid grid-cols-3 gap-3">
                 <label className="text-sm text-zinc-400">Top set (lb)

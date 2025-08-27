@@ -16,7 +16,7 @@ export default function LeadForm() {
     }
 
     return (
-        <form onSubmit={onSubmit} className="grid gap-3 rounded-2xl border border-steel p-5">
+        <form onSubmit={onSubmit} className="grid gap-3 card p-5">
             <h3 className="text-lg font-semibold">Get a free consult</h3>
             <label className="text-sm text-zinc-400">Name
                 <input name="name" required className="mt-1 w-full rounded-md bg-ink border border-steel px-3 py-2" />
