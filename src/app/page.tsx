@@ -6,6 +6,7 @@ import PlateMath from "@/components/PlateMath"
 import WarmupPlanner from "@/components/WarmupPlanner"
 import LeadForm from "@/components/LeadForm"
 import MobileStickyBook from "@/components/MobileStickyBook"
+import StrengthTimelineGrid from "@/components/StrengthTimelineGrid"
 
 export default function Page() {
   return (
@@ -38,6 +39,8 @@ export default function Page() {
             data={[{ w: "W1", v: 365 }, { w: "W2", v: 385 }, { w: "W3", v: 395 }, { w: "W4", v: 405 }]}
           />
         </div>
+        <h2 className="text-xl font-semibold mb-6">Strength timeline</h2>
+        <StrengthTimelineGrid />
       </section>
 
       {/* Training tools */}

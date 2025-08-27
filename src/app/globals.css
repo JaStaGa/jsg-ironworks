@@ -124,3 +124,21 @@ h3,
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path d='M-2 6 L2 10 M0 8 L8 0 M6 -2 L10 2' stroke='%232a2a2a' stroke-width='1'/></svg>");
   background-size: auto, auto, 8px 8px;
 }
+
+/* PR pulse */
+.pr-dot {
+  filter: drop-shadow(0 0 6px rgba(255, 122, 0, .6));
+  animation: pr 1.2s ease-in-out infinite;
+}
+
+@keyframes pr {
+
+  0%,
+  100% {
+    opacity: .75;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
