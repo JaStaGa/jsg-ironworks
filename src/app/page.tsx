@@ -7,6 +7,7 @@ import WarmupPlanner from "@/components/WarmupPlanner"
 import LeadForm from "@/components/LeadForm"
 import MobileStickyBook from "@/components/MobileStickyBook"
 import StrengthTimelineGrid from "@/components/StrengthTimelineGrid"
+import SessionHeatmap from "@/components/SessionHeatmap"
 
 export default function Page() {
   return (
@@ -41,6 +42,8 @@ export default function Page() {
         </div>
         <h2 className="text-xl font-semibold mb-6">Strength timeline</h2>
         <StrengthTimelineGrid />
+        <h2 className="text-xl font-semibold mb-6">Sessions overview</h2>
+        <SessionHeatmap />
       </section>
 
       {/* Training tools */}

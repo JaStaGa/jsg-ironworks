@@ -142,3 +142,146 @@ h3,
     opacity: 1;
   }
 }
+
+/* Heatmap cells */
+.heat-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: #111;
+}
+
+.heat-0 {
+  background: #141414;
+}
+
+.heat-1 {
+  background: rgba(255, 122, 0, .18);
+}
+
+.heat-2 {
+  background: rgba(255, 122, 0, .32);
+}
+
+.heat-3 {
+  background: rgba(255, 122, 0, .50);
+}
+
+.heat-4 {
+  background: rgba(255, 122, 0, .70);
+}
+
+/* Fade into divider at the bottom of the card */
+.heat-fade {
+  position: relative;
+  overflow: hidden;
+}
+
+.heat-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 18px;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0), rgba(10, 10, 10, 1));
+  pointer-events: none;
+}
+
+/* CTA with right-edge sweep */
+.btn-cta {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  font-weight: 600;
+  background: var(--color-safety);
+  color: #0a0a0a;
+  box-shadow: 0 6px 18px rgba(255, 122, 0, .15);
+  transition: transform 200ms var(--spring), box-shadow 200ms var(--spring), filter 200ms var(--spring);
+  overflow: hidden;
+}
+
+.btn-cta::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, .9) 16%, rgba(255, 255, 255, 0) 32%);
+  transform: translateX(120%);
+  transition: transform 700ms var(--spring);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.btn-cta:hover {
+  box-shadow: 0 10px 26px rgba(255, 122, 0, .25);
+}
+
+.btn-cta:hover::after {
+  transform: translateX(-8%);
+}
+
+.btn-cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.btn-cta:active {
+  transform: scale(.98);
+}
+
+
+/* Sticky footer bar + haptic tap */
+.sticky-bar {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, .35);
+}
+
+.tap-haptic {
+  transition: transform 120ms var(--spring), box-shadow 200ms var(--spring);
+}
+
+.tap-haptic:active {
+  transform: scale(.98);
+}
+
+/* Social proof drift */
+.logo-strip {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.logo-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: drift 36s linear infinite;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-pill {
+  width: 96px;
+  height: 24px;
+  border-radius: 9999px;
+  background: #2a2a2a;
+  filter: grayscale(1) contrast(1.1);
+  opacity: .75;
+}
+
+.logo-pill:hover {
+  opacity: 1;
+  filter: none;
+}
