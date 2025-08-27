@@ -252,15 +252,25 @@ h3,
 .logo-strip {
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  height: 28px;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
 .logo-track {
   display: flex;
   gap: 16px;
   width: max-content;
-  animation: drift 36s linear infinite;
+  animation: drift 30s linear infinite;
 }
+
+/* Remove the .logo-track.rev styles */
+/* @media (prefers-reduced-motion: no-preference) {
+  .logo-track.rev {
+    animation-direction: reverse;
+    animation-duration: 30s;
+    opacity: 1;
+  }
+} */
 
 @keyframes drift {
   from {
@@ -268,20 +278,134 @@ h3,
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(-30%);
+    /* Reduced movement for tighter spacing */
   }
 }
 
-.logo-pill {
+.logo {
   width: 96px;
-  height: 24px;
-  border-radius: 9999px;
-  background: #2a2a2a;
-  filter: grayscale(1) contrast(1.1);
-  opacity: .75;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: .8;
+  filter: grayscale(1) contrast(1.05);
+  transition: opacity .2s var(--spring), filter .2s var(--spring);
 }
 
-.logo-pill:hover {
+.logo:hover {
   opacity: 1;
   filter: none;
+}
+
+.logo svg {
+  width: 96px;
+  height: 28px;
+  display: block;
+}
+
+/* Programs: diagonal badge + tilt */
+.program-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-diag {
+  position: absolute;
+  top: 10px;
+  right: -34px;
+  transform: rotate(35deg);
+  color: #e5e5e5;
+  border: 1px solid #3a3a3a;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 2px 44px;
+}
+
+.tilt-hover {
+  will-change: transform;
+  transition: transform 200ms var(--spring), box-shadow 200ms var(--spring);
+}
+
+.tilt-hover:hover {
+  transform: translateY(-2px) rotateX(1deg) rotateY(-1deg);
+}
+
+/* Block builder rows */
+.block-row {
+  display: grid;
+  grid-template-columns: auto repeat(4, 110px) 32px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--color-steel);
+  border-radius: 12px;
+  background: #0d0d0d;
+}
+
+.block-chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  border: 1px solid #3a3a3a;
+  background: #1a1a1a;
+  min-width: 78px;
+  text-align: center;
+}
+
+.block-chip.base {
+  background: linear-gradient(to right, #1a1a1a, #141414);
+}
+
+.block-chip.build {
+  background: linear-gradient(to right, #1a1a1a, #17130f);
+}
+
+.block-chip.peak {
+  background: linear-gradient(to right, #1a1a1a, #20160a);
+}
+
+.ci {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  color: #a1a1aa;
+}
+
+.ci input {
+  width: 100%;
+  background: var(--color-ink);
+  border: 1px solid var(--color-steel);
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: #e5e5e5;
+}
+
+.drag-handle {
+  text-align: center;
+  cursor: grab;
+  color: #a1a1aa;
+  user-select: none;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 640px) {
+  .block-row {
+    grid-template-columns: auto repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+
+  .block-row .ci:nth-of-type(n+3) {
+    margin-top: 6px;
+  }
+
+  .block-row .drag-handle {
+    grid-column: 1 / -1;
+  }
 }

@@ -21,7 +21,7 @@ export default function PlateMath() {
                 <h3 className="text-lg font-semibold">Plate Visualizer</h3>
                 <select value={unit} onChange={e => setUnit(e.target.value as Unit)}
                     className="bg-ink border border-steel rounded px-2 py-1 text-sm">
-                    <option value="lb">lb</option><option value="kg">kg</option>
+                    <option value=" lb">lb</option><option value="kg">kg</option>
                 </select>
             </div>
 
