@@ -8,6 +8,8 @@ import LeadForm from "@/components/LeadForm"
 import MobileStickyBook from "@/components/MobileStickyBook"
 import StrengthTimelineGrid from "@/components/StrengthTimelineGrid"
 import SessionHeatmap from "@/components/SessionHeatmap"
+import faq from "./(data)/faq.json"
+import BreadcrumbsJsonLd from "@/components/BreadcrumbsJsonLd"
 
 export default function Page() {
   return (
@@ -98,6 +100,27 @@ export default function Page() {
             },
           }),
         }}
+      />
+
+      {/* FAQPage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: (faq as { q: string; a: string }[]).map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
+      
+      {/* Breadcrumbs: Home */}
+      <BreadcrumbsJsonLd
+        items={[{ name: "Home", url: "https://jsg-ironworks.vercel.app/" }]}
       />
       <div className="sm:hidden"><MobileStickyBook /></div>
     </>

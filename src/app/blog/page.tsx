@@ -1,5 +1,6 @@
 import postsJson from "../(data)/posts.json"
 import PostCard from "@/components/PostCard"
+import BreadcrumbsJsonLd from "@/components/BreadcrumbsJsonLd"
 
 export const metadata = {
     title: "Blog | JSG Ironworks Training",
@@ -25,6 +26,12 @@ export default function Page() {
                     <PostCard key={p.slug} post={p} />
                 ))}
             </div>
+            <BreadcrumbsJsonLd
+                items={[
+                    { name: "Home", url: "https://jsg-ironworks.vercel.app/" },
+                    { name: "Blog", url: "https://jsg-ironworks.vercel.app/blog" },
+                ]}
+            />
         </section>
     )
 }

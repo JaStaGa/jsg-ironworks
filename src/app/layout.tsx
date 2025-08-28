@@ -8,6 +8,7 @@ import Toaster from "@/components/Toaster"
 const site = "https://jsg-ironworks.vercel.app"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site),           // ✅ lets OG/Twitter resolve absolute URLs
   title: "JSG Ironworks Training",
   description: "Strength coaching demo. Programs, pricing, results, booking.",
   alternates: { canonical: site },
