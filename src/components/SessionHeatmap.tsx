@@ -1,13 +1,11 @@
 "use client"
 import { useMemo } from "react"
 
-type Week = { label: string; days: number[] } // 7 numbers per week (Sun..Sat), 0–4 sessions/day
+type Week = { label: string; days: number[] }
 
 export default function SessionHeatmap() {
     const weeks = useMemo<Week[]>(() => {
-        // Deterministic demo data: 12 weeks × 7 days, values 0–4
         const out: Week[] = []
-        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         for (let w = 11; w >= 0; w--) {
             const label = `W${12 - w}`
             const days: number[] = []
@@ -31,19 +29,21 @@ export default function SessionHeatmap() {
             </div>
 
             <div className="mt-3 grid grid-cols-[auto_1fr] gap-3">
-                {/* Day labels */}
                 <div className="grid grid-rows-7 gap-1 text-[11px] text-zinc-500">
-                    {dayNames.map((d) => <div key={d} className="h-[14px] leading-[14px]">{d}</div>)}
+                    {dayNames.map((d) => (
+                        <div key={d} className="h-[14px] leading-[14px]">{d}</div>
+                    ))}
                 </div>
 
-                {/* 12-week grid */}
-                <div className="grid grid-cols-12 gap-1">
-                    {weeks.map((w, wi) => (
-                        <div key={w.label} className="grid grid-rows-7 gap-1">
+                <div className="grid grid-cols-12 gap-1" role="grid" aria-label="Training sessions by day">
+                    {weeks.map((w) => (
+                        <div key={w.label} className="grid grid-rows-7 gap-1" role="row">
                             {w.days.map((v, di) => (
                                 <div
                                     key={di}
                                     className={`heat-cell heat-${v}`}
+                                    role="gridcell"
+                                    aria-label={`${w.label} ${dayNames[di]}: ${v} session${v === 1 ? "" : "s"}`}
                                     title={`${w.label} ${dayNames[di]}: ${v} session${v === 1 ? "" : "s"}`}
                                 />
                             ))}
@@ -52,7 +52,6 @@ export default function SessionHeatmap() {
                 </div>
             </div>
 
-            {/* Legend */}
             <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
                 <span>Load</span>
                 <span className="heat-cell heat-0" />
