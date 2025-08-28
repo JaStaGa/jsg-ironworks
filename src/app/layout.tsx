@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { heading, mono } from "./fonts"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import Toaster from "@/components/Toaster"
 
 const site = "https://jsg-ironworks.vercel.app"
 
@@ -32,9 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="px-4 sm:px-6 lg:px-8">{children}</main>
         <Footer />
+        <Toaster />
         <div id="mobile-sticky-root" />
       </body>
     </html>
   )
 }
-
