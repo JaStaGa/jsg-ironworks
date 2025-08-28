@@ -16,25 +16,40 @@ export default function WarmupPlanner() {
     const [top, setTop] = useState(225)
     const [reps, setReps] = useState(5)
     const [bar, setBar] = useState(45)
+    const [targetRpe, setTargetRpe] = useState(8.5)
 
     // e1RM from Epley using the top set
     const e1rm = useMemo(() => +(top * (1 + reps / 30)).toFixed(1), [top, reps])
 
     const rows = useMemo(() => {
         const inc = 5
-        const warmups = TEMPLATE.map(s => ({
-            ...s,
-            weight: roundToIncrement(e1rm * s.pct, inc),
-        }))
-        return [
-            ...warmups,
-            { pct: top / e1rm, reps, weight: roundToIncrement(top, inc) }
-        ]
+        const warmups = TEMPLATE.map(s => ({ ...s, weight: roundToIncrement(e1rm * s.pct, inc) }))
+        return [...warmups, { pct: top / e1rm, reps, weight: roundToIncrement(top, inc) }]
     }, [e1rm, reps, top])
+
+    function copy() {
+        const lines = [
+            `Top: ${top} lb x ${reps} @ RPE ${targetRpe}`,
+            ...rows.slice(0, -1).map((r, i) => `WU${i + 1}: ${Math.round(r.pct * 100)}% x ${r.reps} = ${r.weight} lb`),
+        ].join("\n")
+        navigator.clipboard.writeText(lines)
+    }
 
     return (
         <div className="card p-5">
-            <h3 className="text-lg font-semibold">Warm-up Planner</h3>
+            <div className="flex items-center justify-between gap-3">
+                <h3 className="text-lg font-semibold">Warm-up Planner</h3>
+                <div className="text-sm text-zinc-400">Target RPE:
+                    <select
+                        value={targetRpe}
+                        onChange={(e) => setTargetRpe(Number(e.target.value))}
+                        className="ml-2 bg-ink border border-steel rounded px-2 py-1 text-sm"
+                    >
+                        {[6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5].map(n => <option key={n} value={n}>{n}</option>)}
+                    </select>
+                </div>
+            </div>
+
             <div className="mt-3 grid grid-cols-3 gap-3">
                 <label className="text-sm text-zinc-400">Top set (lb)
                     <input value={top} onChange={e => setTop(Number(e.target.value) || 0)}
@@ -79,6 +94,10 @@ export default function WarmupPlanner() {
                         })}
                     </tbody>
                 </table>
+            </div>
+
+            <div className="mt-3">
+                <button onClick={copy} className="px-3 py-2 rounded border border-steel text-sm">Copy to clipboard</button>
             </div>
         </div>
     )

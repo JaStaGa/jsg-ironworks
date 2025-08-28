@@ -1,28 +1,59 @@
 "use client"
-import { JSX, useMemo, useState } from "react"
+import { JSX, useEffect, useMemo, useState } from "react"
 import { platePairs, roundToIncrement, type Unit } from "@/lib/plates"
 
 export default function PlateMath() {
     const [unit, setUnit] = useState<Unit>("lb")
     const [bar, setBar] = useState(45)
     const [target, setTarget] = useState(225)
+    const [fractions, setFractions] = useState(true)
 
-    // sync bar for unit
+    // read permalink
+    useEffect(() => {
+        if (typeof window === "undefined") return
+        const sp = new URLSearchParams(window.location.search)
+        const pm = sp.get("pm")
+        if (!pm) return
+        try {
+            const [u, b, t, f] = pm.split(",")
+            if (u === "lb" || u === "kg") setUnit(u)
+            const bNum = Number(b), tNum = Number(t)
+            if (!Number.isNaN(bNum)) setBar(bNum)
+            if (!Number.isNaN(tNum)) setTarget(tNum)
+            setFractions(f !== "0")
+        } catch { }
+    }, [])
+
+    // write permalink
+    useEffect(() => {
+        if (typeof window === "undefined") return
+        const sp = new URLSearchParams(window.location.search)
+        sp.set("pm", [unit, bar, target, fractions ? 1 : 0].join(","))
+        window.history.replaceState({}, "", `${window.location.pathname}?${sp.toString()}`)
+    }, [unit, bar, target, fractions])
+
+    // sync default bar for unit
     const barAuto = unit === "lb" ? 45 : 20
     const barUse = bar || barAuto
 
     const inc = unit === "lb" ? 5 : 2.5
     const rounded = useMemo(() => roundToIncrement(target, inc), [target, inc])
-    const pairs = useMemo(() => platePairs(rounded, unit, barUse), [rounded, unit, barUse])
+    const pairs = useMemo(() => platePairs(rounded, unit, barUse, { fractions }), [rounded, unit, barUse, fractions])
 
     return (
-        <div className="rounded-2xl border border-steel p-5">
+        <div className="card p-5">
             <div className="flex items-center justify-between gap-3">
                 <h3 className="text-lg font-semibold">Plate Visualizer</h3>
-                <select value={unit} onChange={e => setUnit(e.target.value as Unit)}
-                    className="bg-ink border border-steel rounded px-2 py-1 text-sm">
-                    <option value=" lb">lb</option><option value="kg">kg</option>
-                </select>
+                <div className="flex items-center gap-2">
+                    <label className="text-sm text-zinc-400 flex items-center gap-2">
+                        <input type="checkbox" checked={fractions} onChange={(e) => setFractions(e.target.checked)} />
+                        fractional
+                    </label>
+                    <select value={unit} onChange={e => setUnit(e.target.value as Unit)}
+                        className="bg-ink border border-steel rounded px-2 py-1 text-sm">
+                        <option value="lb">lb</option><option value="kg">kg</option>
+                    </select>
+                </div>
             </div>
 
             <div className="mt-3 grid grid-cols-3 gap-3">
@@ -68,14 +99,8 @@ export default function PlateMath() {
 function renderPlates({ xStart, dir, pairs }: {
     xStart: number; dir: 1 | -1; pairs: [number, number][]
 }) {
-    // widths are symbolic by weight
     const width = (w: number) => 6 + Math.log(w + 1) * 6
-    const color = (w: number) =>
-        w >= 45 ? "#ff7a00" :
-            w >= 25 ? "#1f2937" :
-                w >= 10 ? "#374151" :
-                    "#52525b"
-
+    const color = (w: number) => (w >= 45 ? "#ff7a00" : w >= 25 ? "#1f2937" : w >= 10 ? "#374151" : "#52525b")
     let x = xStart
     const els: JSX.Element[] = []
     for (const [w, count] of pairs) {
