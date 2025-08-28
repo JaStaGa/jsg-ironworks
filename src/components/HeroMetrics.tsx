@@ -41,7 +41,9 @@ export default function HeroMetrics() {
             <div>
                 <h1 className="heading text-4xl sm:text-5xl font-semibold tracking-tight">JSG Ironworks Training</h1>
                 <p className="mt-4 text-zinc-400 max-w-xl">Build measurable strength. Track PRs. See results.</p>
-                <SocialStrip />
+                <div className="hidden lg:block">
+                    <SocialStrip />
+                </div>
                 <div className="mt-8 flex gap-3">
                     <Link href="/book" className="btn-cta">Book a session</Link>
                     <Link href="/programs" className="rounded-lg px-4 py-2 border border-steel">View programs</Link>
