@@ -572,3 +572,24 @@ h3,
     height: 2px;
   }
 }
+
+/* Navbar Book pulse on scroll */
+.book-pulse {
+  animation: bookPulse 1.2s var(--spring) 1;
+}
+
+@keyframes bookPulse {
+  0% {
+    transform: translateZ(0) scale(1);
+    box-shadow: 0 6px 18px rgba(255, 122, 0, .15);
+  }
+
+  40% {
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px rgba(255, 122, 0, .25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
