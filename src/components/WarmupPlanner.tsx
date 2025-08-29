@@ -36,7 +36,7 @@ export default function WarmupPlanner() {
     }
 
     return (
-        <div className="card p-5">
+        <div className="card p-5 min-w-0 overflow-hidden">
             <div className="flex items-center justify-between gap-3">
                 <h3 className="text-lg font-semibold">Warm-up Planner</h3>
                 <div className="text-sm text-zinc-400">Target RPE:

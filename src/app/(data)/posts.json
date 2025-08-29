@@ -4,13 +4,13 @@
         "title": "Progressive Overload: The Basics",
         "date": "2025-08-01",
         "excerpt": "How to add weight or reps without stalling.",
-        "contentHtml": "<p>Progressive overload drives adaptation. Add small increments weekly and deload when fatigue accumulates.</p>"
+        "contentHtml": "<p><strong>Progressive overload</strong> drives adaptation. Add small increments weekly (weight, reps, sets, or density). Plan a <em>deload</em> every 4–6 weeks to drop fatigue, then continue the trend.</p><h3>Practical targets</h3><ul><li>Lower body: +5 lb / week (novice), then +5 lb / block</li><li>Upper body: +2.5 lb / week (novice), then +2.5 lb / block</li></ul><p>Track your Estimated 1RM weekly. If e1RM stops moving for 2–3 weeks, change the stimulus (rep range, volume, or exercise variation).</p>"
     },
     {
         "slug": "epley-vs-brzycki",
         "title": "1RM Formulas: Epley vs Brzycki",
         "date": "2025-08-10",
         "excerpt": "Which estimator makes sense for you.",
-        "contentHtml": "<p>Epley tends to fit high-rep sets. Brzycki fits lower-rep efforts. Track your own error and choose.</p>"
+        "contentHtml": "<p>The <strong>Epley</strong> formula fits higher-rep top sets (5–10). <strong>Brzycki</strong> fits lower reps (1–5). Track both e1RMs versus your actual max over a cycle, then bias toward whichever has smaller error for you.</p><pre><code>epley:   1RM = weight × (1 + reps/30)\nbrzycki: 1RM = weight × 36 / (37 − reps)\n</code></pre><div class=\"callout\">Tip: Log your top sets with RPE. Your estimates get better when you compare against occasional singles.</div>"
     }
 ]

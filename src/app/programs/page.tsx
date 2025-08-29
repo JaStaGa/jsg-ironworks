@@ -14,7 +14,10 @@ export default function Page() {
     return (
         <section className="mx-auto max-w-6xl py-12">
             <h1 className="text-3xl font-semibold mb-6">Programs</h1>
-
+            <p className="text-sm text-zinc-400 mb-6">
+                Pick a plan, book a start call, then we tailor blocks (Base → Build → Peak) to your schedule and equipment.
+                You’ll get weekly check-ins and adjustments. Prefer more control? Use the Block Builder to customize sets×reps×RPE and export.
+            </p>
             {/* Cards */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {list.map((p) => <ProgramCard key={p.slug} p={p} />)}

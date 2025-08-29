@@ -51,7 +51,8 @@ export default function PlateMath() {
                     </label>
                     <select value={unit} onChange={e => setUnit(e.target.value as Unit)}
                         className="bg-ink border border-steel rounded px-2 py-1 text-sm">
-                        <option value="lb">lb</option><option value="kg">kg</option>
+                        <option value="lb">lb</option>
+                        <option value="kg">kg</option>
                     </select>
                 </div>
             </div>
@@ -96,20 +97,29 @@ export default function PlateMath() {
     )
 }
 
+// renderPlates: draw at current x, then advance (not advance-first)
 function renderPlates({ xStart, dir, pairs }: {
-    xStart: number; dir: 1 | -1; pairs: [number, number][]
+  xStart: number; dir: 1 | -1; pairs: [number, number][]
 }) {
-    const width = (w: number) => 6 + Math.log(w + 1) * 6
-    const color = (w: number) => (w >= 45 ? "#ff7a00" : w >= 25 ? "#1f2937" : w >= 10 ? "#374151" : "#52525b")
-    let x = xStart
-    const els: JSX.Element[] = []
-    for (const [w, count] of pairs) {
-        for (let i = 0; i < count; i++) {
-            const plateW = width(w)
-            x += dir * plateW
-            els.push(<rect key={`${w}-${i}-${dir}`} x={x} y={40} width={plateW} height={40} rx={4} fill={color(w)} />)
-            x += dir * 2
-        }
+  const gap = 2
+  const width = (w: number) => 6 + Math.log(w + 1) * 6
+  const color = (w: number) =>
+    w >= 45 ? "#ff7a00" :
+    w >= 25 ? "#1f2937" :
+    w >= 10 ? "#374151" : "#52525b"
+
+  let x = xStart
+  const els: JSX.Element[] = []
+  for (const [w, count] of pairs) {
+    for (let i = 0; i < count; i++) {
+      const plateW = width(w)
+      // draw at x
+      const drawX = dir === 1 ? x : x - plateW
+      els.push(<rect key={`${w}-${i}-${dir}`} x={drawX} y={40} width={plateW} height={40} rx={4} fill={color(w)} />)
+      // then move by plate + gap
+      x += dir * (plateW + gap)
     }
-    return els
+  }
+  return els
 }
+

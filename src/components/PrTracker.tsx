@@ -59,7 +59,7 @@ export default function PrTracker() {
     }
 
     return (
-        <div className="card p-5">
+        <div className="card p-5 min-w-0 overflow-hidden">
             <div className="flex items-center justify-between gap-3">
                 <h3 className="text-lg font-semibold">PR Tracker</h3>
                 <div className="flex items-center gap-2">
