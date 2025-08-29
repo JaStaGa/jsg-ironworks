@@ -66,7 +66,9 @@ export default function PricingPlans({ pricing }: { pricing: Pricing }) {
 
             {/* Compare */}
             <h2 className="text-xl font-semibold mt-12 mb-4">Compare</h2>
-            <div className="overflow-x-auto rounded-xl border border-steel">
+
+            {/* Desktop/tablet table */}
+            <div className="hidden sm:block overflow-x-auto rounded-xl border border-steel">
                 <table className="min-w-[700px] w-full text-sm">
                     <thead>
                         <tr className="bg-zinc-950">
@@ -81,7 +83,7 @@ export default function PricingPlans({ pricing }: { pricing: Pricing }) {
                                 {pricing.tiers.map((t) => {
                                     const v = row[t.id] ?? false
                                     return (
-                                        <td key={`${billing}-${t.id}-${i}`} className="p-3">
+                                        <td key={`${t.id}-${i}`} className="p-3">
                                             {v ? <span className="tick">✔︎</span> : <span className="text-zinc-600">—</span>}
                                         </td>
                                     )
@@ -90,6 +92,26 @@ export default function PricingPlans({ pricing }: { pricing: Pricing }) {
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            {/* Mobile stacked cards */}
+            <div className="sm:hidden grid gap-3">
+                {pricing.compare.map((row, i) => (
+                    <div key={i} className="rounded-xl border border-steel p-4">
+                        <div className="text-sm font-medium mb-2">{row.feature}</div>
+                        <div className="grid grid-cols-3 gap-2 text-sm">
+                            {pricing.tiers.map((t) => {
+                                const v = row[t.id] ?? false
+                                return (
+                                    <div key={t.id} className="rounded-lg border border-steel/70 p-2 text-center">
+                                        <div className="text-[11px] text-zinc-400">{t.name}</div>
+                                        <div className="mt-1">{v ? "✔︎" : "—"}</div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                ))}
             </div>
         </>
     )
