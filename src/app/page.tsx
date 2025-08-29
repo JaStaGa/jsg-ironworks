@@ -24,7 +24,7 @@ export default function Page() {
 
       {/* Progress summary */}
       <section className="mx-auto max-w-6xl py-8 steel-divider">
-        <h2 className="text-xl font-semibold mb-6">Progress at a glance</h2>
+        {/* <h2 className="text-xl font-semibold mb-6">Progress at a glance</h2>
         <p className="text-sm text-zinc-400 mb-6">Sample client 1RMs over 4 weeks (demo data).</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <ResultTile
@@ -42,7 +42,7 @@ export default function Page() {
             delta="+40 lb"
             data={[{ w: "W1", v: 365 }, { w: "W2", v: 385 }, { w: "W3", v: 395 }, { w: "W4", v: 405 }]}
           />
-        </div>
+        </div> */}
         <h2 className="text-xl font-semibold mt-10 mb-2">Strength timeline</h2>
         <p className="text-sm text-zinc-400 mb-4">Scrub across weeks to compare lifts and PR milestones.</p>
         <StrengthTimelineGrid />
